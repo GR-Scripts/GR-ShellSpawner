@@ -1,5 +1,12 @@
 local spawnedShells = {}
 
+CreateThread(function()
+    while not NetworkIsSessionStarted() do
+        Wait(100)
+    end
+    TriggerServerEvent("gr-shellspawner:requestShells")
+end)
+
 RegisterNetEvent("gr-shellspawner:spawnShells", function(shells)
     for _, shell in ipairs(shells) do
         local model = GetHashKey(shell.model)
