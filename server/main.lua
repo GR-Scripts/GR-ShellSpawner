@@ -12,3 +12,8 @@ AddEventHandler("onResourceStop", function(resourceName)
         TriggerClientEvent("gr-shellspawner:clearShells", -1)
     end
 end)
+
+RegisterNetEvent("gr-shellspawner:requestShells", function()
+    local src = source
+    TriggerClientEvent("gr-shellspawner:spawnShells", src, Config.Shells)
+end)
